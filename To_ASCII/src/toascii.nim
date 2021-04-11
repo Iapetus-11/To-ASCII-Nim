@@ -33,7 +33,7 @@ when isMainModule:
   #   echo INVALID_ARGS
   #   quit 1
 
-  let source: string = args[1]
+  let source: string = args[0]
 
   if not fileExists(source):
     echo &"File {source} does not exist."
@@ -42,7 +42,7 @@ when isMainModule:
   var scale: float
 
   try:
-    scale = args[2].parseFloat
+    scale = args[1].parseFloat
   except ValueError:
     echo INVALID_ARGS
     quit 1
@@ -51,10 +51,11 @@ when isMainModule:
   var widthStretch: float
 
   try:
-    widthStretch = args[3].parseFloat
+    widthStretch = args[2].parseFloat
   except ValueError:
     widthStretch = 2.0
 
-  let palette: string = Palettes.getOrDefault(args[4].toUpperAscii, Palettes["BLOCK"])
+  let palette: string = Palettes.getOrDefault(args[3].toUpperAscii, Palettes["BLOCK"])
 
-  echo loadImage[ColorRGBF](source).scaleDownToMax(scale).stretchWidth(widthStretch).asciify(palette)
+  let image = loadImage[ColorRGBF](source)
+  echo image.scaleDownToMax((scale * image.height.float).int).stretchWidth(widthStretch).asciify(palette)
