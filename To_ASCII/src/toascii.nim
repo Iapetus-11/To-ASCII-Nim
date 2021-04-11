@@ -1,6 +1,7 @@
 import strformat
 import strutils
 import system
+import tables
 import os
 
 import ./asciifier
@@ -38,8 +39,6 @@ when isMainModule:
     quit 1
 
   var scale: float
-  var widthStretch: float
-  var palette: string
 
   try:
     scale = args[2].parseFloat
@@ -47,21 +46,16 @@ when isMainModule:
     echo INVALID_ARGS
     quit 1
 
+
+  var widthStretch: float
+
   try:
     widthStretch = args[3].parseFloat
   except ValueError:
     echo INVALID_ARGS
     quit 1
 
-  try:
-    let paletteArg: string = args[4]
-
-    try:
-      let paletteIndex: float = paletteArg.parseFloat
-    except ValueError:
-      palette = paletteArg
-  except IndexDefect:
-    palette = &"{PALETTES.BLOCK}"
+  let palette = Palettes.getOrDefault(args[4].toUpperAscii, Palettes["BLOCK"])
 
   echo args
   echo sourceType
