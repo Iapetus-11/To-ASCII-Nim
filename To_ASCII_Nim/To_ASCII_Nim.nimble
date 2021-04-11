@@ -11,3 +11,4 @@ bin           = @["To_ASCII_Nim"]
 # Dependencies
 
 requires "nim >= 1.4.4"
+requires "imageman >= 0.8.2"
