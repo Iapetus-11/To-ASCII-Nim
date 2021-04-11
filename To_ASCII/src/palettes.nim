@@ -1,4 +1,4 @@
 
 type
-  Palettes* = enum
+  PALETTES* = enum
     BLOCK = " ░▒▓█", HIGH = " `-~+#@", LOW = " ¨'³•µðEÆ"
