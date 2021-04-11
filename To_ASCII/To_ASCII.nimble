@@ -2,7 +2,7 @@
 
 version       = "1.0.0"
 author        = "Milo Weinberg"
-description   = "A command line tool for converting images, gifs, videos, and even LIVE video to ASCII!"
+description   = "A command line tool for converting images to ASCII!"
 license       = "MIT"
 srcDir        = "src"
 bin           = @["toascii"]
