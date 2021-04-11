@@ -45,15 +45,21 @@ when isMainModule:
     echo INVALID_ARGS
     quit 1
 
-
-  var widthStretch: float
+  var widthStretch: float = 2.0
 
   try:
     widthStretch = args[2].parseFloat
   except ValueError:
-    widthStretch = 2.0
+    discard
+  except IndexDefect:
+    discard
 
-  let palette: string = Palettes.getOrDefault(args[3].toUpperAscii, Palettes["BLOCK"])
+  var palette: string = Palettes["BLOCK"]
+
+  try:
+    palette = Palettes.getOrDefault(args[3].toUpperAscii, palette)
+  except IndexDefect:
+    discard
 
   let image = loadImage[ColorRGBF](source)
   echo image.scaleDownToMax((scale * image.height.float).int).stretchWidth(widthStretch).asciify(palette)
