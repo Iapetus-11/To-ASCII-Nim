@@ -1,4 +1,5 @@
 import strformat
+import imageman
 import strutils
 import system
 import tables
@@ -22,15 +23,15 @@ Required arguments are surrounded in <>, optional arguments are surrounded in []
 when isMainModule:
   let args = commandLineParams()
 
-  if not (args.len in [3, 4, 5, 6]):
+  if not (args.len in [2, 3, 4]):
     echo INVALID_ARGS
     quit 1
 
-  let sourceType: string = args[0].toLowerAscii
-
-  if not (sourceType in ["image"]):
-    echo INVALID_ARGS
-    quit 1
+  # let sourceType: string = args[0].toLowerAscii
+  #
+  # if not (sourceType in ["image"]):
+  #   echo INVALID_ARGS
+  #   quit 1
 
   let source: string = args[1]
 
@@ -52,14 +53,8 @@ when isMainModule:
   try:
     widthStretch = args[3].parseFloat
   except ValueError:
-    echo INVALID_ARGS
-    quit 1
+    widthStretch = 2.0
 
-  let palette = Palettes.getOrDefault(args[4].toUpperAscii, Palettes["BLOCK"])
+  let palette: string = Palettes.getOrDefault(args[4].toUpperAscii, Palettes["BLOCK"])
 
-  echo args
-  echo sourceType
-  echo source
-  echo scale
-  echo widthStretch
-  echo palette
+  echo loadImage[ColorRGBF](source).scaleDownToMax(scale).stretchWidth(widthStretch).asciify(palette)
