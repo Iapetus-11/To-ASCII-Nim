@@ -2,6 +2,12 @@
 A command line tool for converting images to ASCII!
 
 ## Compiling / Building
+* Clone the repository and `cd` into it:
+```
+git clone https://github.com/Iapetus-11/To-ASCII-Nim
+cd To-ASCII-Nim
+```
+* Compile:
 ```
 nimble install
 ```
