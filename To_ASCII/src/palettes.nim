@@ -1,4 +1,4 @@
+import tables
 
-type
-  PALETTES* {.pure.} = enum
-    BLOCK = " ░▒▓█", HIGH = " `-~+#@", LOW = " ¨'³•µðEÆ"
+const
+  Palettes* = {"BLOCK": " ░▒▓█", "HIGH": " `-~+#@", "LOW": " ¨'³•µðEÆ"}.toTable
