@@ -5,7 +5,7 @@ author        = "Milo Weinberg"
 description   = "A command line tool for converting images, gifs, videos, and even LIVE video to ASCII!"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["To_ASCII_Nim"]
+bin           = @["toascii"]
 
 
 # Dependencies
