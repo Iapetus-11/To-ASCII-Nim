@@ -1,6 +1,10 @@
+import strformat
+import strutils
+import system
 import os
 
 import ./asciifier
+import ./palettes
 
 const INVALID_ARGS: string = """Invalid arguments inputted. See below for proper usage:
 asciify <type> <source> <scale> [width stretch] [gradient] [loop]
@@ -15,4 +19,53 @@ Required arguments are surrounded in <>, optional arguments are surrounded in []
 """
 
 when isMainModule:
-  let params = commandLineParams()
+  let args = commandLineParams()
+
+  if not (args.len in [3, 4, 5, 6]):
+    echo INVALID_ARGS
+    quit 1
+
+  let sourceType: string = args[0].toLowerAscii
+
+  if not (sourceType in ["image"]):
+    echo INVALID_ARGS
+    quit 1
+
+  let source: string = args[1]
+
+  if not fileExists(source):
+    echo &"File {source} does not exist."
+    quit 1
+
+  var scale: float
+  var widthStretch: float
+  var palette: string
+
+  try:
+    scale = args[2].parseFloat
+  except ValueError:
+    echo INVALID_ARGS
+    quit 1
+
+  try:
+    widthStretch = args[3].parseFloat
+  except ValueError:
+    echo INVALID_ARGS
+    quit 1
+
+  try:
+    let paletteArg: string = args[4]
+
+    try:
+      let paletteIndex: float = paletteArg.parseFloat
+    except ValueError:
+      palette = paletteArg
+  except IndexDefect:
+    palette = &"{PALETTES.BLOCK}"
+
+  echo args
+  echo sourceType
+  echo source
+  echo scale
+  echo widthStretch
+  echo palette
