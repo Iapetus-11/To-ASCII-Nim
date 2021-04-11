@@ -3,21 +3,21 @@ A command line tool for converting images to ASCII!
 
 ## Compiling / Building
 * Clone the repository and `cd` into it:
-```
+```bash
 git clone https://github.com/Iapetus-11/To-ASCII-Nim
 cd To-ASCII-Nim
 ```
 * Compile:
-```
+```bash
 nimble install
-```
-or
-```
+
+# or
+
 nim compile src/toascii.nim
 ```
 
 ## Usage
-```
+```bash
 asciify <source> <scale> [width stretch] [palette]
 ```
 ### Arguments:
