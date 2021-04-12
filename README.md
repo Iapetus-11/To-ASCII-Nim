@@ -18,7 +18,7 @@ nim compile src/toascii.nim
 
 ## Usage
 ```bash
-asciify <source> <scale> [width stretch] [palette]
+./toascii <source> <scale> [width stretch] [palette]
 ```
 ### Arguments:
 *Required arguments are surrounded in <>, optional arguments are surrounded in [].*
