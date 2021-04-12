@@ -57,7 +57,7 @@ when isMainModule:
   var palette: string = Palettes["BLOCK"]
 
   try:
-    palette = Palettes.getOrDefault(args[3].toUpperAscii, palette)
+    palette = Palettes.getOrDefault(args[3].toUpperAscii, args[3].toUpperAscii)
   except IndexDefect:
     discard
 
