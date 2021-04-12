@@ -3,11 +3,11 @@ import math
 
 proc scaleDownToMax*(image: Image, maxDim: int): Image =
   if image.width > image.height:
-    return image.resizedNN(maxDim, ((image.height.float / image.width.float) * maxDim.float).int)
+    return image.resizedTrilinear(maxDim, ((image.height.float / image.width.float) * maxDim.float).int)
   elif image.width < image.height:
-    return image.resizedNN(((image.width.float / image.height.float) * maxDim.float).int, maxDim)
+    return image.resizedTrilinear(((image.width.float / image.height.float) * maxDim.float).int, maxDim)
   else:
-    return image.resizedNN(maxDim, maxDim)
+    return image.resizedTrilinear(maxDim, maxDim)
 
 proc stretchWidth*(image: Image, factor: float): Image =
   return image.resizedTrilinear((image.width.float * factor.float).int, image.height)
