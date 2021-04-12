@@ -1,4 +1,4 @@
 import tables
 
 const
-  Palettes* = {"BLOCK": " ░▒▓█", "HIGH": " `-~+#@", "LOW": " ¨'³•µðEÆ"}.toTable
+  Palettes* = {"BLOCK": " ░▒▓█", "HIGH": " `-~+#@", "LOW": " ¨'³•µðEÆ", "BRAILE": " ⠂⠆⠎⠏⠯⠿"}.toTable
